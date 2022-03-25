@@ -24,17 +24,18 @@
 
 ## Description
 
-This project illustration a couple of api for managin a store you find here attached the respective diagram and respective tasks.
+This project illustration a couple of api for managing a store you find here attached the respective diagram and respective tasks.
 
 ### Diagrame
-![Store](https://user-images.githubusercontent.com/47975444/159928181-05b6c840-28a3-47cc-85da-a3b50417c131.jpg)
+![Store (1)](https://user-images.githubusercontent.com/47975444/160194932-f22c6626-aea5-46cf-b56c-725709053ad8.png)
+
 
 
 ### Store System Api
  
 ##### Step1 creation simple api crud for the respective modules
 
-- [x] Auth
+- [x] Auth 
 - [x] User
 - [x] Product
 - [x] Category
