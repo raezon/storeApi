@@ -20,7 +20,7 @@ export class AuthController{
         return user
     }
     @Post('signin')
-  
+    @Redirect('http://127.0.0.1:3333/user', 301)
     async signin(@Body() dto:signInDto,@Res() res: Response){
        let user=await this.authService.signin(dto)
        res.send(user)

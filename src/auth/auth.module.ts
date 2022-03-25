@@ -8,20 +8,16 @@ import { UserSchema } from "src/user/user.model";
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from "./role/role.guards";
 import { PassportModule } from "@nestjs/passport";
+import { HttpModule } from "@nestjs/axios";
 
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]), 
+  imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
   JwtModule.register({}),
-  PassportModule.register({      
-    defaultStrategy: 'jwt',      
-    property: 'user',      
-    session: false,    
-}),  
-],
+  ],
   controllers: [AuthController],
   providers: [AuthService,
-    JwtStrategy, 
+    JwtStrategy,
 
   ]
 })

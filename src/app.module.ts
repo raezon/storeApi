@@ -24,12 +24,17 @@ import { RolesGuard } from './auth/role/role.guards';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { JwtStrategy } from './auth/strategy';
 import { PassportModule } from '@nestjs/passport';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
 
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/'),
-
+    PassportModule,
+    JwtModule.register({
+      secret: 'secret-super-nova',
+      signOptions: { expiresIn: '60s' },
+    }),
     AuthModule,
     UserModule,
     ProductModule,
