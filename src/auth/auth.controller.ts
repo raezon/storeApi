@@ -16,8 +16,7 @@ export class AuthController{
     }
     @Post('signup')
     signup(@Body() dto:signUpDto,@Req() request: Request,@User() user){
-        user=request.body
-        return user
+        return this.authService.signup(dto)
     }
     @Post('signin')
     @Redirect('http://127.0.0.1:3333/user', 301)

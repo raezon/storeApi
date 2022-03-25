@@ -14,11 +14,11 @@ export class AuthService {
         return { 'msg': "Hello it's me songoku " }
     }
     async signup(new_user: signUpDto) {
-        
+
         let user;
-       // return dto;
-       new_user.password = await argon.hash(new_user.password);
+        new_user.password = await argon.hash(new_user.password);
         try {
+       
             user = new this.userModel(new_user).save();
             delete user.password;
             return user
@@ -44,12 +44,12 @@ export class AuthService {
             throw new ForbiddenException("Wrong Credentials ");
 
         } else {
-            const token=await this.signToken(user.id, user.email);
+            const token = await this.signToken(user.id, user.email);
             return {
-                "email":user.email,
-                "password":user.password,
-                "roles":user.roles,
-                "token":token
+                "email": user.email,
+                "password": user.password,
+                "roles": user.roles,
+                "token": token
             }
         }
 
