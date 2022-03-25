@@ -46,11 +46,7 @@ import { JwtModule } from '@nestjs/jwt';
     OrderModule
   ],
   providers: [
-    {
-     
-      provide: APP_GUARD,
-      useClass: RolesGuard,
-    },
+
   ]
 
 })
