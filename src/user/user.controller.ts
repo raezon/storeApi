@@ -1,5 +1,6 @@
-import { Controller, Get, Query,Req , Post, Body, Put, Param, Delete, UseGuards, SetMetadata, Request, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Query, Req, Post, Body, Put, Param, Delete, UseGuards, SetMetadata, Request, UseInterceptors } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { session } from 'passport';
 import { JwtGuard } from 'src/auth/guard';
 import { Role } from 'src/auth/role/role.enum';
 import { RolesGuard } from 'src/auth/role/role.guards';
@@ -21,7 +22,7 @@ export class UserController {
 
     return this.userService.create(dto);
   }
-  
+
 
 
   @Get()
@@ -29,21 +30,21 @@ export class UserController {
   @Roles(Role.Admin)
 
   findAll(@Request() req) {
-  
-    return 'This action returns all cats';
+
+    return this.userService.findAll();
   }
-  
+
 
   @Get('profile')
-  @UseGuards(JwtGuard,RolesGuard )
+  @UseGuards(JwtGuard, RolesGuard)
   @Roles(Role.User)
   getProfile(@Request() req) {
     return req.user;
   }
 
-  @Get()
-  findOne(): string {
-    return 'This action returns all cats';
+  @Get(':email')
+  findOne(@Param() email) {
+    return this.userService.findOne(email);
   }
 
   @Put()

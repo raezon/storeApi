@@ -25,4 +25,10 @@ export class UserService {
 
 
     }
+    async findAll() {
+        return await this.userModel.find();
+    }
+    async findOne(parms) {
+        return await this.userModel.findOne({"email":parms});
+    }
 }

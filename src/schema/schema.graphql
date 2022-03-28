@@ -1,0 +1,23 @@
+
+input CategoryInput {
+    id:Int
+    name:String
+    type:String
+    colors:String
+    photo:String
+}
+
+type Category {
+    id:Int
+    name:String
+    type:String
+    colors:String
+    photo:String
+}
+
+type Query {
+    getName(id:String):Category
+    getType(id:String):Category
+    getColors(id:String):Category
+    getPhoto(id:String):Category
+}

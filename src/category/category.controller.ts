@@ -1,7 +1,10 @@
-import { Controller, Get, Query, Post, Body, Put, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Query, Post, Body, Put, Param, Delete, UseGuards, UseInterceptors } from '@nestjs/common';
 import { JwtGuard } from 'src/auth/guard';
-import { CreateCategoryDto } from './dto';
+import { CategoryDto, CreateCategoryDto } from './dto';
 import { CategoryService } from './category.service';
+import { SerializeInterceptor } from '../interceptors/serialize.interceptors';
+import { Serialize } from 'src/decorator/serialize.decorator';
+
 
 @Controller('category')
 export class CategoryController {
@@ -14,23 +17,25 @@ export class CategoryController {
       return  this.categoryService.create(dto);
     }
   
+    @Serialize(CategoryDto)
     @Get()
-    findAll(): string {
-      return 'This action returns all cats';
+    findAll() {
+     
+      return   this.categoryService.findAll();
     }
 
-    @Get()
-    findOne(): string {
+    @Get(":id")
+    findOne() {
       return 'This action returns all cats';
     }
 
     @Put()
-    update(): string {
+    update() {
       return 'This action returns all cats';
     }
 
     @Delete()
-    delete(): string {
+    delete() {
       return 'This action returns all cats';
     }
 }
