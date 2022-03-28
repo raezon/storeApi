@@ -25,8 +25,8 @@ export class CategoryController {
     }
 
     @Get(":id")
-    findOne() {
-      return 'This action returns all cats';
+    findOne(@Param() id) {
+      return   this.categoryService.find(id);
     }
 
     @Put()
