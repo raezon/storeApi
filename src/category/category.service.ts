@@ -29,6 +29,6 @@ export class CategoryService {
 
     async find(id){
 
-        return await this.categoryModel.find(id);
+        return await this.categoryModel.findById(id);
     }
 }
