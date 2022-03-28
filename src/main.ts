@@ -10,6 +10,6 @@ async function bootstrap() {
     keys:['sessions-secret-key842d']
   }))
   app.useGlobalPipes(new ValidationPipe({whitelist:true}));
-  await app.listen(3333);
+  await app.listen(3000);
 }
 bootstrap();

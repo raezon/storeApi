@@ -16,8 +16,8 @@ type Category {
 }
 
 type Query {
-    getName(id:String):Category
-    getType(id:String):Category
-    getColors(id:String):Category
-    getPhoto(id:String):Category
+    getName(id:String):Category.name
+    getType(id:String):Category.type
+    getColors(id:String):Category.colors
+    getPhoto(id:String):Category.photo
 }
