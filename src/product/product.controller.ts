@@ -5,35 +5,34 @@ import { ProductService } from './product.service';
 
 @Controller('product')
 export class ProductController {
-    constructor(private productService:ProductService){}
+  constructor(private productService: ProductService) { }
 
-    @Post()
-   // @UseGuards(JwtGuard)
-    create(@Body() dto:CreateProductDto) {
-     
-      return  this.productService.create(dto);
-    }
-  
-    @Get()
-    @Redirect('https://nestjs.com', 302)
-    findAll() {
-      throw new NotFoundException("not found ya ammar");
-      
-    //  return  this.productService.findAll();
-    }
+  @Post()
+  // @UseGuards(JwtGuard)
+  create(@Body() dto: CreateProductDto) {
 
-    @Get()
-    findOne(): string {
-      return 'This action returns all cats';
-    }
+    return this.productService.create(dto);
+  }
 
-    @Put()
-    update(): string {
-      return 'This action returns all cats';
-    }
+  @Get()
+  //@Redirect('https://nestjs.com', 302)
+  findAll() {
 
-    @Delete()
-    delete(): string {
-      return 'This action returns all cats';
-    }
+    return this.productService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param() id){
+    return this.productService.findOne(id);
+  }
+
+  @Put()
+  update(): string {
+    return 'This action returns all cats';
+  }
+
+  @Delete()
+  delete(): string {
+    return 'This action returns all cats';
+  }
 }

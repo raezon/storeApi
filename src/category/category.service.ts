@@ -1,9 +1,10 @@
 import { Model } from 'mongoose';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Category } from './category.model';
+import { Category, CategoryDocument } from './category.model';
 import { CreateCategoryDto } from './dto/create.dto';
 import * as argon from 'argon2'
+import { CategoryDto } from './dto';
 
 @Injectable()
 export class CategoryService {
@@ -28,7 +29,7 @@ export class CategoryService {
     }
 
     async find(id){
-
-        return await this.categoryModel.findById(id);
+ 
+    return  await this.categoryModel.findOne({id:id});
     }
 }

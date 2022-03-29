@@ -23,14 +23,20 @@ export class Category {
     photo?: Nullable<string>;
 }
 
+export class Product {
+    id?: Nullable<number>;
+    name?: Nullable<string>;
+    slug?: Nullable<string>;
+    price?: Nullable<string>;
+    quantity?: Nullable<string>;
+    photo?: Nullable<string>;
+    categorys?: Nullable<Category[]>;
+}
+
 export abstract class IQuery {
-    abstract getName(id?: Nullable<string>): Nullable<Category> | Promise<Nullable<Category>>;
+    abstract getPropertiesCategory(id?: Nullable<string>): Nullable<Category> | Promise<Nullable<Category>>;
 
-    abstract getType(id?: Nullable<string>): Nullable<Category> | Promise<Nullable<Category>>;
-
-    abstract getColors(id?: Nullable<string>): Nullable<Category> | Promise<Nullable<Category>>;
-
-    abstract getPhoto(id?: Nullable<string>): Nullable<Category> | Promise<Nullable<Category>>;
+    abstract getPropertiesProduct(id?: Nullable<string>): Nullable<Product> | Promise<Nullable<Product>>;
 }
 
 type Nullable<T> = T | null;

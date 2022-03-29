@@ -9,7 +9,12 @@ export class CategoryResolver{
     constructor(private readonly categoryService: CategoryService) {}
     
     @Query()
-    getName(@Args('id') id: String){
-        return  this.categoryService.find(id)
+    getPropertiesCategory(@Args('id') id: String){
+
+        return this.categoryService.find(id);
+
     }
+
+   
+    
 }

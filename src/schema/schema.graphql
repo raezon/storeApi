@@ -14,10 +14,17 @@ type Category {
     colors:String
     photo:String
 }
+type Product {
+    id:Int
+    name:String
+    slug:String
+    price:String
+    quantity:String
+    photo:String
+    categorys:[Category!]
+}
 
 type Query {
-    getName(id:String):Category
-    getType(id:String):Category
-    getColors(id:String):Category
-    getPhoto(id:String):Category
+    getPropertiesCategory(id:String):Category
+    getPropertiesProduct(id:String):Product
 }
