@@ -9,6 +9,7 @@ import { CategoryService } from './category.service';
     imports: [MongooseModule.forFeature([{name: 'Category', schema: CategorySchema}])],
     controllers: [CategoryController],
     providers: [CategoryService,CategoryResolver],
+    exports :[CategoryService]
 })
 
 export class CategoryModule {

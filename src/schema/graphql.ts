@@ -30,7 +30,8 @@ export class Product {
     price?: Nullable<string>;
     quantity?: Nullable<string>;
     photo?: Nullable<string>;
-    categorys?: Nullable<Category[]>;
+    categoryId?: Nullable<string>;
+    categories?: Nullable<Nullable<Category>[]>;
 }
 
 export abstract class IQuery {

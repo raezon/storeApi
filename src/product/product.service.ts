@@ -24,10 +24,12 @@ export class ProductService {
     }
 
     async findAll(){
-        return this.productModel.find().populate('categoryId')
+        return await this.productModel.find().populate('categoryId')
     }
 
     async findOne(id){
-        return this.productModel.findOne({id:id}).populate('categoryId')
+        const product= await this.productModel.findById(id);
+     //   await product.populate('categoryId')
+        return product
     }
 }

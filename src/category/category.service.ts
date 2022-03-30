@@ -30,6 +30,6 @@ export class CategoryService {
 
     async find(id){
  
-    return  await this.categoryModel.findOne({id:id});
+    return  await this.categoryModel.findById(id);
     }
 }

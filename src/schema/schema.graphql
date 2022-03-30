@@ -21,10 +21,12 @@ type Product {
     price:String
     quantity:String
     photo:String
-    categorys:[Category!]
+    categoryId:String
+    categories:[Category]
 }
 
 type Query {
     getPropertiesCategory(id:String):Category
     getPropertiesProduct(id:String):Product
 }
+
