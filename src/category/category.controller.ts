@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Post, Body, Put, Param, Delete, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Query, Post, Body, Put, Param, Delete, UseGuards, UseInterceptors, Patch } from '@nestjs/common';
 import { JwtGuard } from 'src/auth/guard';
 import { CategoryDto, CreateCategoryDto } from './dto';
 import { CategoryService } from './category.service';
@@ -29,13 +29,13 @@ export class CategoryController {
       return   this.categoryService.find(id);
     }
 
-    @Put()
-    update() {
-      return 'This action returns all cats';
+    @Patch(':id')
+    update(@Param('id') id,@Body() body) {
+      return  this.categoryService.put(id,body);
     }
 
-    @Delete()
-    delete() {
-      return 'This action returns all cats';
+    @Delete(':id')
+    delete(@Param('id') id) {
+      return  this.categoryService.delete(id);
     }
 }

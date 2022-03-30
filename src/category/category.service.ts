@@ -32,4 +32,17 @@ export class CategoryService {
  
     return  await this.categoryModel.findById(id);
     }
+
+    async put(identifier, body) {
+        const filter = { id: identifier };
+        const update = { quantity: body.qte };
+        const cart = await this.categoryModel.findOneAndUpdate(filter, update) 
+        return cart
+    }
+
+    async delete(id) {
+
+        const cart= await this.categoryModel.deleteOne(id) 
+        return cart
+    }
 }

@@ -80,4 +80,17 @@ export class OrdersRepository {
         }
         return order
     }
+
+    async update(identifier, body) {
+        const filter = { id: identifier };
+        const update = { quantity: body.qte };
+        const cart = await this.orderModel.findOneAndUpdate(filter, update) 
+        return cart
+    }
+
+    async remove(id) {
+
+        const cart= await this.orderModel.deleteOne(id) 
+        return cart
+    }
 }

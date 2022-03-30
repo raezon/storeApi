@@ -44,21 +44,16 @@ export class CartService {
     }
 
     async put(identifier, body) {
-   
-     
-       
-
         const filter = { id: identifier };
         const update = { quantity: body.qte };
-        
         const cart = await this.cartModel.findOneAndUpdate(filter, update) 
-
         return cart
-
     }
 
-    async delete() {
+    async delete(id) {
 
+        const cart= await this.cartModel.deleteOne(id) 
+        return cart
     }
 
 

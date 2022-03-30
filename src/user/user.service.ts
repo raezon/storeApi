@@ -31,4 +31,17 @@ export class UserService {
     async findOne(parms) {
         return await this.userModel.findOne({"email":parms});
     }
+
+    async put(identifier, body) {
+        const filter = { id: identifier };
+        const update = { quantity: body.qte };
+        const cart = await this.userModel.findOneAndUpdate(filter, update) 
+        return cart
+    }
+
+    async delete(id) {
+
+        const cart= await this.userModel.deleteOne(id) 
+        return cart
+    }
 }

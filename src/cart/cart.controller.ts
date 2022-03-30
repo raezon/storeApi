@@ -29,8 +29,8 @@ export class CartController {
       return  this.cartService.put(id,body);
     }
 
-    @Delete()
-    delete(): string {
-      return 'This action returns all cats';
+    @Delete(':id')
+    delete(@Param('id') id) {
+      return  this.cartService.delete(id);
     }
 }

@@ -25,4 +25,16 @@ export class OrderService {
         const orders =  this.orderRepository.findOne(id);
         return orders
     }
+
+    async put(identifier, body) {
+  
+        const cart = await this.orderRepository.update(identifier, body) 
+        return cart
+    }
+
+    async delete(id) {
+
+       
+        return   await this.orderRepository.remove(id) 
+    }
 }

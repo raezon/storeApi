@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Req, Post, Body, Put, Param, Delete, UseGuards, SetMetadata, Request, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Query, Req, Post, Body, Put, Param, Delete, UseGuards, SetMetadata, Request, UseInterceptors, Patch } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { session } from 'passport';
 import { JwtGuard } from 'src/auth/guard';
@@ -47,13 +47,14 @@ export class UserController {
     return this.userService.findOne(email);
   }
 
-  @Put()
-  update(): string {
-    return 'This action returns all cats';
+
+  @Patch(':id')
+  update(@Param('id') id,@Body() body) {
+    return  this.userService.put(id,body);
   }
 
-  @Delete()
-  delete(): string {
-    return 'This action returns all cats';
+  @Delete(':id')
+  delete(@Param('id') id) {
+    return  this.userService.delete(id);
   }
 }

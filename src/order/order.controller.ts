@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Post, Body, Put, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Query, Post, Body, Put, Param, Delete, UseGuards, Patch } from '@nestjs/common';
 import { JwtGuard } from 'src/auth/guard';
 import { CreateOrder, FormOrder } from './dto';
 import { OrderService } from './order.service';
@@ -24,13 +24,13 @@ export class OrderController {
       return  this.orderService.findOne(id)
     }
 
-    @Put()
-    update(): string {
-      return 'This action returns all cats';
+    @Patch(':id')
+    update(@Param('id') id,@Body() body) {
+      return  this.orderService.put(id,body);
     }
 
-    @Delete()
-    delete(): string {
-      return 'This action returns all cats';
+    @Delete(':id')
+    delete(@Param('id') id) {
+      return  this.orderService.delete(id);
     }
 }

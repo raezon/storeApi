@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Post, Body, Put, Param, Delete, UseGuards, Redirect, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Query, Post, Body, Put, Param, Delete, UseGuards, Redirect, NotFoundException, Patch } from '@nestjs/common';
 import { JwtGuard } from 'src/auth/guard';
 import { CreateProductDto } from './dto';
 import { ProductService } from './product.service';
@@ -26,13 +26,14 @@ export class ProductController {
     return this.productService.findOne(id);
   }
 
-  @Put()
-  update(): string {
-    return 'This action returns all cats';
+
+  @Patch(':id')
+  update(@Param('id') id,@Body() body) {
+    return  this.productService.put(id,body);
   }
 
-  @Delete()
-  delete(): string {
-    return 'This action returns all cats';
+  @Delete(':id')
+  delete(@Param('id') id) {
+    return  this.productService.delete(id);
   }
 }

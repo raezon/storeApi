@@ -32,4 +32,17 @@ export class ProductService {
      //   await product.populate('categoryId')
         return product
     }
+
+    async put(identifier, body) {
+        const filter = { id: identifier };
+        const update = { quantity: body.qte };
+        const cart = await this.productModel.findOneAndUpdate(filter, update) 
+        return cart
+    }
+
+    async delete(id) {
+
+        const cart= await this.productModel.deleteOne(id) 
+        return cart
+    }
 }
