@@ -4,6 +4,7 @@ import { CategoryDto, CreateCategoryDto } from './dto';
 import { CategoryService } from './category.service';
 import { SerializeInterceptor } from '../interceptors/serialize.interceptors';
 import { Serialize } from 'src/decorator/serialize.decorator';
+import { RolesGuard } from 'src/auth/role/role.guards';
 
 
 @Controller('category')
@@ -11,7 +12,7 @@ export class CategoryController {
     constructor(private categoryService:CategoryService){}
 
     @Post()
-   // @UseGuards(JwtGuard)
+    @UseGuards(JwtGuard, RolesGuard)
     create(@Body() dto:CreateCategoryDto) {
      
       return  this.categoryService.create(dto);
@@ -30,11 +31,13 @@ export class CategoryController {
     }
 
     @Patch(':id')
+    @UseGuards(JwtGuard, RolesGuard)
     update(@Param('id') id,@Body() body) {
       return  this.categoryService.put(id,body);
     }
 
     @Delete(':id')
+    @UseGuards(JwtGuard, RolesGuard)
     delete(@Param('id') id) {
       return  this.categoryService.delete(id);
     }
