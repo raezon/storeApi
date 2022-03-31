@@ -15,6 +15,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { GraphQLModule } from '@nestjs/graphql';
+import { CategoryResolver } from './resolvers/category.resolver';
 
 
 @Module({
@@ -41,7 +42,7 @@ import { GraphQLModule } from '@nestjs/graphql';
     WishListModule,
     OrderModule
   ],
-  providers: [],
+  providers: [CategoryResolver],
 
 })
 export class AppModule implements NestModule { 
