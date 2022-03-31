@@ -20,6 +20,10 @@ export class ProductResolver{
      
 
     }
+    @Query()
+    getAllPropertiesProduct(){
+        return 	this.productService.findAll()
+    }
 
    
     

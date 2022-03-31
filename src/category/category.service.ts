@@ -12,7 +12,7 @@ export class CategoryService {
 
     async create(new_category: CreateCategoryDto): Promise<Category> {
         let category;
-      
+
         try {
             category = new this.categoryModel(new_category).save();
             if (category)
@@ -23,26 +23,27 @@ export class CategoryService {
 
         }
     }
-    async findAll(){
+    async find(id) {
+
+        return await this.categoryModel.findById(id);
+    }
+    async findAll() {
 
         return await this.categoryModel.find();
     }
 
-    async find(id){
- 
-    return  await this.categoryModel.findById(id);
-    }
+
 
     async put(identifier, body) {
         const filter = { id: identifier };
         const update = { quantity: body.qte };
-        const cart = await this.categoryModel.findOneAndUpdate(filter, update) 
+        const cart = await this.categoryModel.findOneAndUpdate(filter, update)
         return cart
     }
 
     async delete(id) {
 
-        const cart= await this.categoryModel.deleteOne(id) 
+        const cart = await this.categoryModel.deleteOne(id)
         return cart
     }
 }

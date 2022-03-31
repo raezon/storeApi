@@ -16,7 +16,7 @@ export class CategoryInput {
 }
 
 export class Category {
-    id?: Nullable<number>;
+    id?: Nullable<string>;
     name?: Nullable<string>;
     type?: Nullable<string>;
     colors?: Nullable<string>;
@@ -24,19 +24,21 @@ export class Category {
 }
 
 export class Product {
-    id?: Nullable<number>;
+    id?: Nullable<string>;
     name?: Nullable<string>;
     slug?: Nullable<string>;
     price?: Nullable<string>;
     quantity?: Nullable<string>;
     photo?: Nullable<string>;
-    category?: Nullable<Category>;
+    categorys?: Nullable<Category[]>;
 }
 
 export abstract class IQuery {
     abstract getPropertiesCategory(id?: Nullable<string>): Nullable<Category> | Promise<Nullable<Category>>;
 
     abstract getPropertiesProduct(id?: Nullable<string>): Nullable<Product> | Promise<Nullable<Product>>;
+
+    abstract getAllPropertiesProduct(): Nullable<Nullable<Product>[]> | Promise<Nullable<Nullable<Product>[]>>;
 }
 
 type Nullable<T> = T | null;

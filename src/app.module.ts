@@ -15,7 +15,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { GraphQLModule } from '@nestjs/graphql';
-import { CategoryResolver } from './resolvers/category.resolver';
+
 
 
 @Module({
@@ -29,8 +29,8 @@ import { CategoryResolver } from './resolvers/category.resolver';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       typePaths: ['./**/*.graphql'],
-     playground: true,
-     // plugins: [ApolloServerPluginLandingPageLocalDefault()],
+     playground: false,
+     plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     AuthModule,
     UserModule,
@@ -42,7 +42,7 @@ import { CategoryResolver } from './resolvers/category.resolver';
     WishListModule,
     OrderModule
   ],
-  providers: [CategoryResolver],
+  providers: [],
 
 })
 export class AppModule implements NestModule { 

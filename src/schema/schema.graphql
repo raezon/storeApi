@@ -8,24 +8,26 @@ input CategoryInput {
 }
 
 type Category {
-    id:Int
+    id:String
     name:String
     type:String
     colors:String
     photo:String
 }
 type Product {
-    id:Int
+    id:String
     name:String
     slug:String
     price:String
     quantity:String
     photo:String
-    category:Category
+    categorys:[Category!]
 }
 
 type Query {
+    
     getPropertiesCategory(id:String):Category
     getPropertiesProduct(id:String):Product
+    getAllPropertiesProduct:[Product]
 }
 

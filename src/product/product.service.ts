@@ -24,7 +24,8 @@ export class ProductService {
     }
 
     async findAll(){
-        return await this.productModel.find().populate('categoryId')
+       // return await this.productModel.find().populate('categoryId')
+        return  this.productModel.find();
     }
 
     async findOne(id){

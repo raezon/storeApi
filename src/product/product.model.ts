@@ -2,11 +2,13 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Document } from 'mongoose';
 import { Category } from 'src/category/category.model';
+import { PrimaryExpression } from 'ts-morph';
 
 export type ProductDocument = Product & Document;
 
 @Schema()
 export class Product {
+
   @Prop()
   name: string;
 
@@ -22,7 +24,7 @@ export class Product {
   @Prop()
   photo: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Category' })
+  @Prop({ type: mongoose.Schema.Types.Array, ref: 'Category' })
   categoryId: Category;
 }
 
