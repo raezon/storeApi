@@ -16,15 +16,11 @@ export class ProductResolver{
     @Query()
     getPropertiesProduct(@Args('id') id){
 
-        return this.productService.findOne(id);
+        return 	this.productService.findOne(id)
+     
 
     }
-    @ResolveField()
-    async categories(@Parent() product: Product) {
-      const { categoryId } = product;
-      return 'hi'
-      return this.categoryService.find(categoryId);
-    }
+
    
     
 }

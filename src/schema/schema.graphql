@@ -21,8 +21,7 @@ type Product {
     price:String
     quantity:String
     photo:String
-    categoryId:String
-    categories:[Category]
+    category:Category
 }
 
 type Query {

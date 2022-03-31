@@ -28,9 +28,9 @@ export class ProductService {
     }
 
     async findOne(id){
-        const product= await this.productModel.findById(id);
-     //   await product.populate('categoryId')
-        return product
+       //let product= await this.productModel.findById(id).populate('categoryId');
+        return  this.productModel.findOne({ where: { id:id}, relations: ['categories'] });
+        //return product
     }
 
     async put(identifier, body) {
